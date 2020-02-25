@@ -1,0 +1,8 @@
+# IntelliJ Files
+
+.idea
+
+# Node Files
+
+package-lock.json
+node_modules
