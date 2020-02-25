@@ -11,7 +11,7 @@ const LoadApp = () => {
     const { enqueueSnackbar } = useSnackbar();
     const produceSnackBar = (message, variant) => enqueueSnackbar(message, { variant: variant });
 
-    return "Hello There";
+    return <h1>Hello World!</h1>;
 };
 
 const App = () => {
@@ -37,7 +37,5 @@ const App = () => {
         </ThemeProvider>
     );
 };
-
-
 
 export default App;

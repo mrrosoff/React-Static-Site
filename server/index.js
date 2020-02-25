@@ -5,8 +5,6 @@ const https = require('https');
 const logger = require('morgan');
 const express = require('express');
 
-const classifyProduct = require("./recyclableClassification.js");
-
 const app = express();
 let credentials, httpsServer;
 let secure = false;
