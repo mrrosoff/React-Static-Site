@@ -2,3 +2,7 @@
 
 package-lock.json
 node_modules
+
+# Output Files
+
+dist
