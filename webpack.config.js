@@ -1,18 +1,18 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require("path");
+const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const outputDirectory = "dist";
 
 module.exports = {
-	entry: ['@babel/polyfill', './client/index.js'],
+	entry: ["@babel/polyfill", "./client/index.js"],
 	devServer: { port: 3000, open: true, hot: true, proxy: { "/api/*": "http://localhost:8000" } },
 	module: {
 		rules: [
-			{test: /\.js$/, exclude: /node_modules/, use: {loader: "babel-loader"}},
-			{test: /\.css$/, use: ['style-loader', 'css-loader',]},
-			{test: /\.(png|svg|jpg|gif)$/, use: ['file-loader',]},
+			{test: /\.(js|jsx)$/, exclude: /node_modules/, loader: "babel-loader", options: { presets: ["@babel/preset-env", "@babel/preset-react"]}},
+			{test: /\.css$/, loader: ["style-loader", "css-loader"]},
+			{test: /\.(png|svg|jpg|gif)$/, loader: ["file-loader"]},
 		]
 	},
 	plugins: [
