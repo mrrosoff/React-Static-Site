@@ -6,10 +6,11 @@ const logger = require('morgan');
 const express = require('express');
 
 const app = express();
-let credentials, httpsServer;
+let credentials, server;
 let secure = false;
 
-try {
+try
+{
 	const privateKey = fs.readFileSync('privkey.pem', 'utf8');
 	const certificate = fs.readFileSync('cert.pem', 'utf8');
 	const ca = fs.readFileSync('chain.pem', 'utf8');
@@ -22,14 +23,26 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-const httpServer = http.createServer(app);
-if (secure) { httpsServer = https.createServer(credentials, app); }
+if (secure)
+{
+	server = https.createServer(credentials, app);
+}
 
-app.use((req, res, next) => {
-	if (!req.secure && secure) {
+else
+{
+	server = http.createServer(app);
+}
+
+app.use((req, res, next) =>
+{
+	if (!req.secure && secure)
+	{
 		console.log('Redirecting Insecure Request');
 		res.redirect('https://' + req.headers.host + req.url);
-	} else {
+	}
+
+	else
+	{
 		next();
 	}
 });
@@ -38,7 +51,20 @@ app.use(express.static('dist'));
 
 // Create API URLs Here
 
-app.post('/api/', (req, res) => console.log(req.body.body));
+app.post('/api/postRequest', (req, res) => console.log(req.body));
 
-httpServer.listen(8080, () => console.log('HTTP Server Running on Port 8080'));
-if (secure) { httpsServer.listen(8443, () => console.log('HTTPS Server Running on Port 8443')); }
+
+
+let port;
+
+if (secure)
+{
+	port = 8443
+	server.listen(port, () => console.log('HTTPS Server Running on Port ' + port));
+}
+
+else
+{
+	port = 8080
+	server.listen(port, () => console.log('HTTP Server Running on Port ' + port));
+}
