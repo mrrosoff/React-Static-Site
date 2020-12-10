@@ -1,7 +1,7 @@
 {
   "name": "react-express-template",
   "version": "1.0.0",
-  "description": "Project Short Description",
+  "description": "A Modern Web App Template",
   "scripts": {
     "startClient": "nodemon server/index.js",
     "startServer": "webpack-dev-server -d",
