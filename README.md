@@ -1,6 +1,6 @@
 # React-Express Template
 
-### A Starting Point For A Modern Website
+### A Modern Web App Template
 
 ## About Project
 
@@ -39,7 +39,7 @@ npm install
 Then, run the appropriate command for your purposes.
 
 ```bash
-npm run [dev / prod]
+npm run [start / build]
 ```
 
 ### Serverless Start
@@ -54,7 +54,7 @@ Then in package.json, use the following for scripts:
 
 ```json
 {
-    "dev": "webpack-dev-server -d",
-    "prod": "webpack -p"
+    "start": "webpack-dev-server -d",
+    "build": "webpack -p"
 }
 ```
