@@ -54,7 +54,7 @@ Then in package.json, use the following for scripts:
 
 ```json
 {
-    "start": "webpack-dev-server -d",
-    "build": "webpack -p"
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production"
 }
 ```

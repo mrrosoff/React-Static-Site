@@ -1,43 +1,34 @@
-import React, {useState} from "react";
+import React from "react";
 
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
-import { SnackbarProvider, useSnackbar } from 'notistack';
+import { SnackbarProvider } from "notistack";
 
 import Layout from "./Layout";
 
-const LoadApp = props =>
-{
-    const { enqueueSnackbar } = useSnackbar();
-    const produceSnackBar = (message, variant="error") => enqueueSnackbar(message, { variant: variant });
+const App = () => {
+	const darkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
-    return <Layout produceSnackBar={produceSnackBar} {...props}/>;
-};
+	const theme = React.useMemo(
+		() =>
+			createMuiTheme({
+				palette: {
+					type: darkMode ? "dark" : "light"
+				}
+			}),
+		[darkMode]
+	);
 
-const App = () =>
-{
-    const [darkMode, setDarkMode] = useState(useMediaQuery('(prefers-color-scheme: dark)'));
-
-    const theme = React.useMemo(
-        () =>
-            createMuiTheme({
-                palette: {
-                    type: darkMode ? 'dark' : 'light',
-                },
-            }),
-        [darkMode],
-    );
-
-    return (
-        <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <SnackbarProvider maxSnack={3} preventDuplicate>
-                <LoadApp darkMode={darkMode} setDarkMode={setDarkMode}/>
-            </SnackbarProvider>
-        </ThemeProvider>
-    );
+	return (
+		<ThemeProvider theme={theme}>
+			<CssBaseline />
+			<SnackbarProvider maxSnack={3} preventDuplicate>
+				<Layout />
+			</SnackbarProvider>
+		</ThemeProvider>
+	);
 };
 
 export default App;

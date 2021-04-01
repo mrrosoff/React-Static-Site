@@ -1,11 +1,10 @@
 import React from "react";
 
 import { Button, Container, Grid, Typography } from "@material-ui/core";
-import {sendServerRequest} from "../utils/api";
+import { sendServerRequest } from "../utils/api";
 
-const Layout = () =>
-{
-	let request = {requestType: "postRequest", payload: "Test"};
+const Layout = () => {
+	let request = { requestType: "postRequest", payload: "Test" };
 
 	return (
 		<Container>
@@ -16,17 +15,19 @@ const Layout = () =>
 				alignContent={"center"}
 				alignItems={"center"}
 				spacing={2}
-				style={{height: "100vh"}}
+				style={{ height: "100vh" }}
 			>
 				<Grid item>
 					<Typography variant={"h2"}>Hello World!</Typography>
 				</Grid>
 				<Grid item>
-					<Button color={"primary"} onClick={() => sendServerRequest(request)}>Click Me To Hit API</Button>
+					<Button color={"primary"} onClick={() => sendServerRequest(request)}>
+						Click Me To Hit API
+					</Button>
 				</Grid>
 			</Grid>
 		</Container>
-	)
+	);
 };
 
 export default Layout;
