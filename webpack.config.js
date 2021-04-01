@@ -37,16 +37,18 @@ module.exports = {
 					{ loader: "sass-loader" }
 				]
 			},
-			{ test: /\.(png|svg|jpe?g|gif)$/, loader: ["file-loader"] }
+			{
+				test: /\.(woff|woff2|eot|ttf|otf|png|svg|jpe?g|gif|mp4|wav|mp3)$/i,
+				loader: "file-loader"
+			}
 		]
 	},
 	output: { filename: "bundle.js", path: path.join(__dirname, outputDirectory) },
-
 	plugins: [
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
-			template: "./static/template/index.html",
-			favicon: "./static/template/favicon.ico",
+			template: "./client/static/template/index.html",
+			favicon: "./client/static/template/favicon.ico",
 			title: "React-Express-Template"
 		}),
 		new webpack.HotModuleReplacementPlugin()
