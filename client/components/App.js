@@ -1,10 +1,8 @@
 import React from "react";
 
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-
-import { SnackbarProvider } from "notistack";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { createTheme, ThemeProvider, StyledEngineProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 
 import Layout from "./Layout";
 
@@ -13,21 +11,21 @@ const App = () => {
 
 	const theme = React.useMemo(
 		() =>
-			createMuiTheme({
+			createTheme({
 				palette: {
-					type: darkMode ? "dark" : "light"
+					mode: darkMode ? "dark" : "light"
 				}
 			}),
 		[darkMode]
 	);
 
 	return (
-		<ThemeProvider theme={theme}>
-			<CssBaseline />
-			<SnackbarProvider maxSnack={3} preventDuplicate>
+		<StyledEngineProvider injectFirst>
+			<ThemeProvider theme={theme}>
+				<CssBaseline />
 				<Layout />
-			</SnackbarProvider>
-		</ThemeProvider>
+			</ThemeProvider>
+		</StyledEngineProvider>
 	);
 };
 

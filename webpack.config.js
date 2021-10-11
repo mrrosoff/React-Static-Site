@@ -8,14 +8,17 @@ const outputDirectory = "dist";
 module.exports = {
 	entry: "./client/index.js",
 	devServer: {
+		static: {
+			directory: path.resolve(__dirname, outputDirectory)
+		},
 		port: 3000,
 		open: true,
 		hot: true,
 		historyApiFallback: true,
-		stats: "minimal",
 		proxy: { "/api/*": "http://localhost:8080" }
 	},
 	devtool: "eval-source-map",
+	mode: process.env.NODE_ENV || "development",
 	module: {
 		rules: [
 			{
@@ -51,6 +54,14 @@ module.exports = {
 			favicon: "./client/static/template/favicon.ico",
 			title: "React-Express-Template"
 		}),
-		new webpack.HotModuleReplacementPlugin()
-	]
+		new webpack.DefinePlugin({
+			"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development")
+		})
+	],
+	resolve: {
+		fallback: {
+			fs: false
+		}
+	},
+	stats: "minimal"
 };

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button, Container, Grid, Typography } from "@material-ui/core";
+import { Button, Container, Grid, Typography } from "@mui/material";
 import { sendServerRequest } from "../utils/api";
 
 const Layout = () => {
@@ -11,7 +11,7 @@ const Layout = () => {
 			<Grid
 				container
 				direction={"column"}
-				justify={"center"}
+				justifyContent={"center"}
 				alignContent={"center"}
 				alignItems={"center"}
 				spacing={2}
