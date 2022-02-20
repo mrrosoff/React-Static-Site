@@ -1,32 +1,23 @@
-# React-Express Template
+# React Static Site
 
-### A Modern Web App Template
+### A GitHub Pages Starting Point
 
 ## About Project
 
-This template repository is a great starting point for a fresh modern website. Utilizing npm, webpack, and Express, the 
-site is ready for both development and production.
+This template repository is a great starting point for a github pages static website. Utilizing node, webpack, and React, the template is ready for both development and production.
 
-The site comes bundled with the following technology.
+The template comes bundled with the following technology.
 
 ### Client
 
-The site utilizes the newest React syntax for the base code. Use `client/components/Layout.js` as a starting point for 
-your site. App.js has built in error handling, call the method `props.produceSnackbar` from anywhere in `Layout.js`.
+The site utilizes the React for the base code. Use `components/Layout.js` as a starting point for  your site.
 
-Styles can be used inline or within the SCSS file found under `client/static/styles/global.scss`. The file is imported 
-in `client/index.js`, if you wish to add more SCSS files, simply import them there.
+Styles can be used inline or within the SCSS file found under `static/styles/global.scss`. The file is imported in `index.js`, if you wish to add more SCSS files, simply import them there.
 
-Replace elements of `client/static/templates/` with files to your liking. Image imports can be done directly, webpack 
-will handle the loading.
+Replace elements of `static/templates/` with files to your liking. Image imports can be done directly, webpack will handle the loading.
 
 The site is bundled with several React packages for a quick development start. Material-UI is packaged for a styled 
 component library, and framer-motion is included if animations are required.
-
-### Server
-
-The server is a simple Express server. When booted, it will search along the server file path for certificate files. If
-found, it will boot the server in HTTPS mode, otherwise in traditional HTTP mode. The site uses morgan for logging.
 
 ## Quick Start
 
@@ -42,19 +33,15 @@ Then, run the appropriate command for your purposes.
 npm run [start / build]
 ```
 
-### Serverless Start
+### Deployment
 
-If you do not need the server, run the script provided.
+On every push to main, a new branch will be created using GitHub actions, containing source code needed for a GitHub Pages deployment. To finish the setup, do the following:
 
-```bash
-./removeServer.sh
-```
+1. Go to `Settings` in your repository.
+2. Click `Pages` on the left menu.
+3. Select the `gh-pages` branch from the dropdown. Leave `root` as `/`.
+4. Your site will go live!
 
-Then in package.json, use the following for scripts:
+For additional configuration, you can add a custom domain and HTTPS support.
 
-```json
-{
-    "start": "webpack serve --mode development",
-    "build": "webpack --mode production"
-}
-```
+If you are looking for a full stack web application built on AWS and GitHub pages, see [here](https://github.com/mrrosoff/React-Lambda-Full-Stack).

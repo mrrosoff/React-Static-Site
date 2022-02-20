@@ -1,11 +1,8 @@
 import React from "react";
 
-import { Button, Container, Grid, Typography } from "@mui/material";
-import { sendServerRequest } from "../utils/api";
+import { Container, Grid, Typography } from "@mui/material";
 
 const Layout = () => {
-	let request = { requestType: "postRequest", payload: "Test" };
-
 	return (
 		<Container>
 			<Grid
@@ -19,11 +16,6 @@ const Layout = () => {
 			>
 				<Grid item>
 					<Typography variant={"h2"}>Hello World!</Typography>
-				</Grid>
-				<Grid item>
-					<Button color={"primary"} onClick={() => sendServerRequest(request)}>
-						Click Me To Hit API
-					</Button>
 				</Grid>
 			</Grid>
 		</Container>

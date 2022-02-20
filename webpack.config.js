@@ -1,7 +1,5 @@
 const path = require("path");
-const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const outputDirectory = "dist";
 
@@ -13,9 +11,7 @@ module.exports = {
 		},
 		port: 3000,
 		open: true,
-		hot: true,
-		historyApiFallback: true,
-		proxy: { "/api/*": "http://localhost:8080" }
+		hot: true
 	},
 	devtool: "eval-source-map",
 	mode: process.env.NODE_ENV || "development",
@@ -48,20 +44,11 @@ module.exports = {
 	},
 	output: { filename: "bundle.js", path: path.join(__dirname, outputDirectory) },
 	plugins: [
-		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
-			template: "./client/static/template/index.html",
-			favicon: "./client/static/template/favicon.ico",
+			template: "./static/template/index.html",
+			favicon: "./static/template/favicon.ico",
 			title: "React-Express-Template"
-		}),
-		new webpack.DefinePlugin({
-			"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development")
 		})
 	],
-	resolve: {
-		fallback: {
-			fs: false
-		}
-	},
 	stats: "minimal"
 };

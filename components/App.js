@@ -8,14 +8,8 @@ import Layout from "./Layout";
 
 const App = () => {
 	const darkMode = useMediaQuery("(prefers-color-scheme: dark)");
-
 	const theme = React.useMemo(
-		() =>
-			createTheme({
-				palette: {
-					mode: darkMode ? "dark" : "light"
-				}
-			}),
+		() => createTheme({ palette: { mode: darkMode ? "dark" : "light" } }),
 		[darkMode]
 	);
 
