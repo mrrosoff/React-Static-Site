@@ -1,20 +1,20 @@
 const path = require("path");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const outputDirectory = "dist";
+const mode = process.env.NODE_ENV || "development";
 
 module.exports = {
-	entry: "./client/index.js",
+	entry: "./index.js",
 	devServer: {
-		static: {
-			directory: path.resolve(__dirname, outputDirectory)
-		},
+		static: { directory: path.resolve(__dirname, outputDirectory) },
 		port: 3000,
 		open: true,
 		hot: true
 	},
 	devtool: "eval-source-map",
-	mode: process.env.NODE_ENV || "development",
+	mode: mode,
 	module: {
 		rules: [
 			{
@@ -48,7 +48,8 @@ module.exports = {
 			template: "./static/template/index.html",
 			favicon: "./static/template/favicon.ico",
 			title: "React-Express-Template"
-		})
+		}),
+		new webpack.DefinePlugin({ IS_DEVELOPMENT: mode === "development" })
 	],
 	stats: "minimal"
 };
