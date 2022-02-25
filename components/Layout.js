@@ -1,9 +1,6 @@
-import React from "react";
-
 import { Container, Grid, Typography } from "@mui/material";
 
 const Layout = () => {
-	const mode = IS_DEVELOPMENT ? "development" : "production";
 	return (
 		<Container>
 			<Grid
@@ -19,7 +16,9 @@ const Layout = () => {
 					<Typography variant={"h2"}>Hello World!</Typography>
 				</Grid>
 				<Grid item>
-					<Typography variant={"h4"}>You are in {mode} mode. Your journey begins here.</Typography>
+					<Typography variant={"h4"}>
+						You are in {process.env.NODE_ENV} mode. Your journey begins here.
+					</Typography>
 				</Grid>
 			</Grid>
 		</Container>

@@ -1,4 +1,4 @@
-import React from "react";
+import { useMemo } from "react";
 
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { createTheme, ThemeProvider, StyledEngineProvider } from "@mui/material/styles";
@@ -8,7 +8,7 @@ import Layout from "./Layout";
 
 const App = () => {
 	const darkMode = useMediaQuery("(prefers-color-scheme: dark)");
-	const theme = React.useMemo(
+	const theme = useMemo(
 		() => createTheme({ palette: { mode: darkMode ? "dark" : "light" } }),
 		[darkMode]
 	);
