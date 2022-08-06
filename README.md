@@ -4,7 +4,7 @@
 
 ## About Project
 
-This template repository is a great starting point for a github pages static website. Utilizing node, webpack, and React, the template is ready for both development and production.
+This template repository is a great starting point for a github pages static website. Utilizing Node, Vite, and React, the template is ready for both development and production.
 
 The template comes bundled with the following technology.
 
@@ -12,7 +12,7 @@ The template comes bundled with the following technology.
 
 The site utilizes the React for the base code. Use `components/Layout.js` as a starting point for  your site.
 
-Styles can be used inline or within the SCSS file found under `static/styles/global.scss`. The file is imported in `index.js`, if you wish to add more SCSS files, simply import them there.
+Styles can be used inline or within the SCSS file found under `src/assets/styles/global.scss`. The file is imported in `index.js`, if you wish to add more SCSS files, simply import them there.
 
 Replace elements of `static/templates/` with files to your liking. Image imports can be done directly, webpack will handle the loading.
 
@@ -24,7 +24,7 @@ component library, and framer-motion is included if animations are required.
 First, download the required npm packages.
 
 ```bash
-npm install
+npm install --legacy-peer-deps
 ```
 
 Then, run the appropriate command for your purposes.
@@ -32,6 +32,8 @@ Then, run the appropriate command for your purposes.
 ```bash
 npm run [start / build]
 ```
+
+When deploying to production, remember to add `.env` to your `.gitignore` and purge it from your repository.
 
 ### Deployment
 
