@@ -24,7 +24,7 @@ component library, and framer-motion is included if animations are required.
 First, download the required npm packages.
 
 ```bash
-npm install --legacy-peer-deps
+npm install
 ```
 
 Then, run the appropriate command for your purposes.

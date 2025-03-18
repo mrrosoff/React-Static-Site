@@ -13,8 +13,4 @@ coverage
 dist
 lib
 out
-
-# Server Files
-
-dependency-reduced-pom.xml
 target
